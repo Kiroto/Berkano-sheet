@@ -82,6 +82,10 @@
         <input id="compatibilities-input" type="text" readonly />
         <label for="incompatibilities-input">Incompatibilidades</label>
         <input id="incompatibilities-input" type="text" readonly />
+        <div class="horizontal-flex">
+          <input id="file-load" type="file" />
+          <button id="save-data-button">Save</button>
+        </div>
       </div>
       <div id="ultimate-field" class="ultimate-text-area-container">
         <h2>Definitiva</h2>
@@ -127,8 +131,10 @@
     const DOMERList = document.getElementById('enemy-reactions')
 
     const DOMUltimateField = document.getElementById('ultimate-field')
+    const DOMUltimateText = document.getElementById('ultimate-text-area')
     const DOMArchetypeSelect = document.getElementById('archetype-select')
 
+    const DOMName = document.getElementById('name-input')
     const DOMHealthBar = document.getElementById('health-progress')
     const DOMHealthCurrent = document.getElementById('health-input')
     const DOMHealthCurrentMax = document.getElementById('health-current-max')
@@ -136,6 +142,9 @@
     const DOMMovement = document.getElementById('movement-input')
     const DOMCompat = document.getElementById('compatibilities-input')
     const DOMIncompat = document.getElementById('incompatibilities-input')
+
+    const DOMFileLoad = document.getElementById('file-load')
+    const DOMFileSave = document.getElementById('save-data-button')
 
     const genStatPair = statName => {
       return {
@@ -148,6 +157,7 @@
     const stats = ['str', 'int', 'wis', 'dex', 'cha']
 
     const statDomData = stats.map(it => genStatPair(it))
+    const getStatDomData = sk => statDomData.find(it => it.stat == sk)
 
     const getCurrentArchKey = () => {
       return DOMArchetypeSelect.value
@@ -223,43 +233,120 @@
       DOMUltimateField.hidden = !statDomData.some(
         it => parseInt(it['input'].value) >= 20
       )
+
+      updateHealthBar()
+      updateArchetypeData()
     }
 
     // Set up event listeners
-    statDomData.forEach(statPair => {
-      const refreshActionHandler = receiver => {
-        const changeAmt = receiver.target.value
-        if (!isNaN(changeAmt)) {
-          statPair['bar'].value = changeAmt
-        }
+    const download = (content, fileName, contentType) => {
+      var a = document.createElement('a')
+      var file = new Blob([content], { type: contentType })
+      a.href = URL.createObjectURL(file)
+      a.download = fileName
+      a.click()
+    }
 
-        refreshActionsList()
+    const retrieveCurrentData = () => {
+      return {
+        name: DOMName.value,
+        archetype: DOMArchetypeSelect.value,
+        str: getStatDomData('str').input.value,
+        dex: getStatDomData('dex').input.value,
+        wis: getStatDomData('wis').input.value,
+        int: getStatDomData('int').input.value,
+        cha: getStatDomData('cha').input.value,
+        hp: DOMHealthCurrent.value,
+        cmhp: DOMHealthCurrentMax.value,
+        ult: DOMUltimateText.value
       }
+    }
 
-      const archetypeSelectHandler = receiver => {
-        const currentArch = getCurrentArch()
-        DOMMaxHealth.value = currentArch.health
-        DOMMovement.value = currentArch.speed
-        DOMCompat.value = currentArch.compat.join(', ')
-        DOMIncompat.value = currentArch.incompat.join(', ')
-        refreshActionsList()
-      }
+    const saveData = () => {
+      const retrievedData = retrieveCurrentData()
+      download(
+        JSON.stringify(retrievedData),
+        retrievedData.name + '.json',
+        'text/json'
+      )
+    }
 
-      const updateHealthBar = receiver => {
-        DOMHealthBar.max = DOMHealthCurrentMax.value
-        DOMHealthBar.value = DOMHealthCurrent.value
-      }
-      statPair['input'].addEventListener('change', refreshActionHandler)
-      DOMArchetypeSelect.addEventListener('change', archetypeSelectHandler)
+    const loadData = obj => {
+      DOMName.value = obj.name
+      DOMArchetypeSelect.value = obj.archetype
+      getStatDomData('str').input.value = obj.str
+      getStatDomData('dex').input.value = obj.dex
+      getStatDomData('wis').input.value = obj.wis
+      getStatDomData('int').input.value = obj.int
+      getStatDomData('cha').input.value = obj.cha
+      DOMHealthCurrent.value = obj.hp
+      DOMHealthCurrentMax.value = obj.cmhp
+      DOMUltimateText.value = obj.ult
+      updateArchetypeData()
+      updateHealthBar()
+      refreshStatBars()
+      refreshActionsList()
+    }
+
+    const updateHealthBar = receiver => {
+      DOMHealthBar.max = DOMHealthCurrentMax.value
+      DOMHealthBar.value = DOMHealthCurrent.value
+    }
+
+    const updateArchetypeData = receiver => {
+      const currentArch = getCurrentArch()
+      if (!currentArch) return
+      DOMMaxHealth.value = currentArch.health
+      DOMMovement.value = currentArch.speed
+      DOMCompat.value = currentArch.compat.join(', ')
+      DOMIncompat.value = currentArch.incompat.join(', ')
+    }
+
+    const refreshStatBars = () => {
+      statDomData.forEach(statPair => {
+        statPair['bar'].value = statPair['input'].value
+      })
+    }
+
+    const setUpEventListeners = () => {
+      DOMArchetypeSelect.addEventListener('change', updateArchetypeData)
+      DOMArchetypeSelect.addEventListener('change', refreshActionsList)
+
       DOMHealthCurrent.addEventListener('change', updateHealthBar)
+      DOMHealthCurrent.addEventListener('change', refreshActionsList)
+
       DOMHealthCurrentMax.addEventListener('change', updateHealthBar)
-    })
+      DOMHealthCurrentMax.addEventListener('change', refreshActionsList)
+
+      statDomData.forEach(statPair => {
+        statPair['input'].addEventListener('change', refreshStatBars)
+        statPair['input'].addEventListener('change', refreshActionsList)
+      })
+
+      const onFileUploadChange = event => {
+        const reader = new FileReader()
+        reader.onload = onFileReaderLoad
+        reader.readAsText(event.target.files[0])
+      }
+
+      const onFileReaderLoad = event => {
+        const obj = JSON.parse(event.target.result)
+        loadData(obj)
+      }
+
+      DOMFileLoad.addEventListener('change', onFileUploadChange)
+
+      DOMFileSave.addEventListener('click', _ => {
+        saveData()
+      })
+    }
 
     // Set default values
     statDomData.forEach(statPair => {
       statPair['bar'].value = statPair['input'].value
     })
 
+    setUpEventListeners()
     // Load with preliminary data
     refreshActionsList()
 
