@@ -33,7 +33,7 @@
             "filter_stat_req": false,
             "filter_req": 10,
             "title": "Sanación",
-            "text": "Al conocer en gran medida los atributos de imbuir de energía vital puedes utilizarlos para recuperar Salud en Medio de un conflicto, esta recuperación también se puede usar con aliados mediante el contacto (+ 1d12 PS). fuera de combate solo se podrá utilizar 2 veces al dia."
+            "text": "Al conocer en gran medida los atributos de imbuir de energía vital puedes utilizarlos para recuperar Salud en Medio de un conflicto, esta recuperación también se puede usar con aliados mediante el contacto (+ 1d12 PS). Fuera de combate solo se podrá utilizar 2 veces al día, al igual que si en el dado de esta curación se obtiene un número inferior a 6, la sanación curará 6 como mínimo."
         },
         {
             "filter_stat": "dex",
@@ -126,14 +126,14 @@
             "filter_stat_req": false,
             "filter_req": 0,
             "title": "Refuerzo",
-            "text": "Al imbuir de energía vital el cuerpo y mente obtiene un recubrimiento que proporciona +1 a la defensa o +2 a la integridad."
+            "text": "Al imbuir de energía vital el cuerpo y mente obtiene un recubrimiento que proporciona +1 a la defensa o +2 a la integridad para el siguiente ataque recibido."
         },
         {
             "filter_stat": "str",
             "filter_stat_req": true,
             "filter_req": 0,
             "title": "Refuerzo (Mejora)",
-            "text": "Al imbuir de energía vital el cuerpo y mente obtiene un recubrimiento que proporciona +1 a la defensa o +2 a la integridad."
+            "text": "Si tu arquetipo es Potenciador Refuerzo te dará un extra de +1 a sus bonos."
         },
         {
             "filter_stat": "dex",
@@ -243,6 +243,13 @@
             "text": "Si tu arquetipo es Manipulador Sonidos relajantes afecta a todos tus aliados que se encuentren a 10 pies de ti."
         },
         {
+            "filter_stat": "dex",
+            "filter_stat_req": false,
+            "filter_req": 10,
+            "title": "Flujo Positivo",
+            "text": "Gracias al dominio del flujo de energía vital, puedes enviar rafagas de energía elemental a tus aliados para imbuir sus ataques con un elemento básico o especial a elección agregando así potencia o un efecto (+1d6 extra daño elemental)."
+        },
+        {
             "filter_stat": "wis",
             "filter_stat_req": false,
             "filter_req": 5,
@@ -284,7 +291,7 @@
             "filter_stat_req": false,
             "filter_req": 0,
             "title": "Distorsión",
-            "text": "Al concentrar la energía vital se puede modificar sus propiedades, de esa forma se puede cambiar el tipo de daño de los ataques que se recibirán (Cambio de daño elemental Básico)"
+            "text": "Al concentrar la energía vital se puede modificar sus propiedades, de esa forma se puede cambiar el tipo de daño de los ataques que se recibirás tu o tus aliados a 30 Pies (Cambio de daño elemental Básico)"
         },
         {
             "filter_stat": "wis",
@@ -341,13 +348,6 @@
             "filter_req": 10,
             "title": "Repeler Energía",
             "text": "La emisión de energía y el control de la intensidad permiten desviar objetos físicos y flujos de energía que se dirijan hacia ti mediante una rafaga de la misma. (Daño recibido - 1d8) Si el total del daño es inferior o igual al daño amortiguado por la rafaga de energía vital, el proyectil u energía se considera repelido y podrá ser redirigido a otra criatura, esta redirección requerirá una nueva tirada hacia la defensa o integridad del nuevo objetivo."
-        },
-        {
-            "filter_stat": "dex",
-            "filter_stat_req": false,
-            "filter_req": 10,
-            "title": "Flujo Positivo",
-            "text": "Gracias al dominio del flujo de energía vital, puedes enviar rafagas de energía elemental a tus aliados para imbuir sus ataques con un elemento básico o especial a elección agregando así potencia o un efecto (+1d6 extra daño elemental)."
         },
         {
             "filter_stat": "cha",

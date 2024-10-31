@@ -118,3 +118,9 @@ h2 {
 .horizontal-flex {
   display: flex;
 }
+
+.vertical-flex {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}

@@ -61,6 +61,17 @@
           ></progress>
           <input id="cha-input" type="number" min="0" max="20" value="0" />
         </div>
+        <label for="actions-load">
+          Configuración de acciones personalizada
+        </label>
+        <input id="actions-load" type="file" />
+        <button id="actions-default">Reiniciar Acciones</button>
+
+        <label for="archetypes-load">
+          Configuración de arquetipos personalizada
+        </label>
+        <input id="archetypes-load" type="file" />
+        <button id="archetypes-default">Reiniciar Acciones</button>
       </div>
       <div class="stat-container">
         <label for="name-input">Nombre</label>
@@ -76,15 +87,29 @@
           /
           <input id="health-max" type="number" value="50" readonly />
         </div>
+        <div class="horizontal-flex">
+          <div class="vertical-flex">
+            <label for="defense-input">Defensa</label>
+            <input id="defense-input" type="text" readonly />
+          </div>
+          <div class="vertical-flex">
+            <label for="integrity-input">Integridad</label>
+            <input id="integrity-input" type="text" readonly />
+          </div>
+        </div>
         <label for="movement-input">Movimiento</label>
         <input id="movement-input" type="text" readonly />
         <label for="compatibilities-input">Compatibilidades</label>
         <input id="compatibilities-input" type="text" readonly />
         <label for="incompatibilities-input">Incompatibilidades</label>
         <input id="incompatibilities-input" type="text" readonly />
+
         <div class="horizontal-flex">
-          <input id="file-load" type="file" />
-          <button id="save-data-button">Save</button>
+          <div class="vertical-flex">
+            <label for="file-load">Cargar personaje</label>
+            <input id="file-load" type="file" />
+          </div>
+          <button id="save-data-button">Guardar Personaje</button>
         </div>
       </div>
       <div id="ultimate-field" class="ultimate-text-area-container">
@@ -142,9 +167,19 @@
     const DOMMovement = document.getElementById('movement-input')
     const DOMCompat = document.getElementById('compatibilities-input')
     const DOMIncompat = document.getElementById('incompatibilities-input')
+    const DOMDefense = document.getElementById('defense-input')
+    const DOMIntegrity = document.getElementById('integrity-input')
 
     const DOMFileLoad = document.getElementById('file-load')
     const DOMFileSave = document.getElementById('save-data-button')
+
+    const DOMActionsLoad = document.getElementById('actions-load')
+    const DOMArchetypeLoad = document.getElementById('archetypes-load')
+    const DOMActionsReload = document.getElementById('actions-default')
+    const DOMArchetypeReload = document.getElementById('archetypes-default')
+
+    let isCustomArch = false
+    let isCustomAct = false
 
     const genStatPair = statName => {
       return {
@@ -248,7 +283,7 @@
     }
 
     const retrieveCurrentData = () => {
-      return {
+      const saveData = {
         name: DOMName.value,
         archetype: DOMArchetypeSelect.value,
         str: getStatDomData('str').input.value,
@@ -260,6 +295,14 @@
         cmhp: DOMHealthCurrentMax.value,
         ult: DOMUltimateText.value
       }
+      if (isCustomAct) {
+        saveData.customAct = actionSource
+      }
+      if (isCustomArch) {
+        saveData.customArch = archetypeSource
+      }
+
+      return saveData
     }
 
     const saveData = () => {
@@ -271,7 +314,7 @@
       )
     }
 
-    const loadData = obj => {
+    const loadPlayerData = obj => {
       DOMName.value = obj.name
       DOMArchetypeSelect.value = obj.archetype
       getStatDomData('str').input.value = obj.str
@@ -282,9 +325,34 @@
       DOMHealthCurrent.value = obj.hp
       DOMHealthCurrentMax.value = obj.cmhp
       DOMUltimateText.value = obj.ult
+
+      if (obj.customArch) {
+        loadArchetypeSource(obj.customArch)
+      }
+
+      if (obj.customAct) {
+        loadActionSource(obj.customAct)
+      }
+
       updateArchetypeData()
       updateHealthBar()
       refreshStatBars()
+      refreshActionsList()
+    }
+
+    const loadActionSource = (obj, isCustom = true) => {
+      isCustomAct = isCustom
+      actionSource.length = 0
+      Object.assign(actionSource, obj)
+      refreshActionsList()
+    }
+
+    const loadArchetypeSource = (obj, isCustom = true) => {
+      isCustomArch = isCustom
+      archetypeSource.length = 0
+      Object.assign(archetypeSource, obj)
+      updateArchetypeData()
+      updateHealthBar()
       refreshActionsList()
     }
 
@@ -300,6 +368,8 @@
       DOMMovement.value = currentArch.speed
       DOMCompat.value = currentArch.compat.join(', ')
       DOMIncompat.value = currentArch.incompat.join(', ')
+      DOMDefense.value = currentArch.defense
+      DOMIntegrity.value = currentArch.integrity
     }
 
     const refreshStatBars = () => {
@@ -323,18 +393,50 @@
         statPair['input'].addEventListener('change', refreshActionsList)
       })
 
-      const onFileUploadChange = event => {
+      const onPlayerFileUpload = event => {
         const reader = new FileReader()
-        reader.onload = onFileReaderLoad
+        reader.onload = onPlayerFileRead
         reader.readAsText(event.target.files[0])
       }
 
-      const onFileReaderLoad = event => {
+      const onPlayerFileRead = event => {
         const obj = JSON.parse(event.target.result)
-        loadData(obj)
+        loadPlayerData(obj)
       }
 
-      DOMFileLoad.addEventListener('change', onFileUploadChange)
+      const onArchetypesFileUpload = event => {
+        const reader = new FileReader()
+        reader.onload = onArchetypesFileRead
+        reader.readAsText(event.target.files[0])
+      }
+
+      const onArchetypesFileRead = event => {
+        const obj = JSON.parse(event.target.result)
+        loadArchetypeSource(obj)
+      }
+
+      const onActionsFileUpload = event => {
+        const reader = new FileReader()
+        reader.onload = onActionsFileRead
+        reader.readAsText(event.target.files[0])
+      }
+
+      const onActionsFileRead = event => {
+        const obj = JSON.parse(event.target.result)
+        loadActionSource(obj)
+      }
+
+      DOMFileLoad.addEventListener('change', onPlayerFileUpload)
+      DOMActionsLoad.addEventListener('change', onActionsFileUpload)
+      DOMArchetypeLoad.addEventListener('change', onArchetypesFileUpload)
+
+      DOMActionsReload.addEventListener('click', _ => {
+        resetActionSource()
+      })
+
+      DOMArchetypeReload.addEventListener('click', _ => {
+        resetArchetypeSource()
+      })
 
       DOMFileSave.addEventListener('click', _ => {
         saveData()
@@ -350,36 +452,35 @@
     // Load with preliminary data
     refreshActionsList()
 
-    fetch('./source.json')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`)
-        }
-        return res.json()
-      })
-      .then(data => {
-        actionSource.length = 0
-        Object.assign(actionSource, data)
-      })
-      .catch(error => console.error('Unable to fetch data:', error))
-      .finally(it => {
-        refreshActionsList()
-      })
+    const resetActionSource = () => {
+      fetch('./source.json')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+          }
+          return res.json()
+        })
+        .then(data => {
+          loadActionSource(data, false)
+        })
+        .catch(error => console.error('Unable to fetch data:', error))
+    }
 
-    fetch('./archetypes.json')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`)
-        }
-        return res.json()
-      })
-      .then(data => {
-        archetypeSource.length = 0
-        Object.assign(archetypeSource, data)
-      })
-      .catch(error => console.error('Unable to fetch data:', error))
-      .finally(it => {
-        refreshActionsList()
-      })
+    const resetArchetypeSource = () => {
+      fetch('./archetypes.json')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+          }
+          return res.json()
+        })
+        .then(data => {
+          loadArchetypeSource(data, false)
+        })
+        .catch(error => console.error('Unable to fetch data:', error))
+    }
+
+    resetActionSource()
+    resetArchetypeSource()
   </script>
 </html>
