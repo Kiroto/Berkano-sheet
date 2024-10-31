@@ -22,11 +22,102 @@
             "text": "Utilizando la creación de energía vital puedes moldear armas de todo tipo, estas armas serán permanentes y tangibles en el mundo, Al crearlas tendrá que estar en un espacio vacío que puedas ver que esté a menos de 5 pies de ti. La invocación de estas tomará parte de tus Puntos de salud para compensar la creación de energía vital como cambio según lo invocado:\n\n          1. Armas Cuerpo a Cuerpo (Coste Invocación: 5 PS)(1d6 Daño): Espadas, lanzas, hachas, bastones, etc...\n\n          2. Armas a Distancia (Coste Invocación: 10 PS) (1d8 Daño): Armamento de Fuego, Arcos, Hondas, etc..."
         },
         {
+            "filter_stat": "int",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Armería (Mejora)",
+            "text": "Si tu arquetipo es Invocador también se podrá crear:\n\n1. Objetos Comunes (Coste Invocación: 5 Hp o Más): Estos objetos con diversas utilidades del común, no podrán utilizarse como armas, ni tener cualidades especiales.\n\n2. Armas Especializadas (Coste Invocación: 15 Hp o Más) (1d12 Daño): Estas armas pueden ser versátiles, utilizadas tanto cuerpo a cuerpo como a distancia, y pueden tener utilidades extra fuera de combate. A diferencia de la armería base las armas especializadas pueden ser desconvocadas, al hacerlo los puntos de salud gastados en la creación volverán al invocador. Latigos,Tonfas, dagas, cadenas etc..."
+        },
+        {
             "filter_stat": "str",
             "req_arch": false,
             "filter_req": 10,
             "title": "Sanación",
             "text": "Al conocer en gran medida los atributos de imbuir de energía vital puedes utilizarlos para recuperar Salud en Medio de un conflicto, esta recuperación también se puede usar con aliados mediante el contacto (+ 1d12 PS). fuera de combate solo se podrá utilizar 2 veces al dia."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Flujo Maleable",
+            "text": "Permite controlar la energía vital que emanas para diferentes usos: agarrar, jalar, empujar, tomar y retener objetos. Además de obtener la capacidad de separar esta energía vital de tu cuerpo y dejarla en lugares bajo una función simple, al cumplirse esta función la energía vital se disipará. las acciones que desees hacer con el flujo maleable no podrán ser mayores a las que naturalmente haría el usuario, no podrá ejercer más fuerza que la natural del mismo, ni tener propiedades que este no tenga."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Flujo Ofensivo",
+            "text": "Controlando la energía vital que emanas y la intensidad de la emisión puedes lanzar un proyectil de energía desde tu cuerpo hacia un objeto o ser vivo a una distancia de 60 pies. El tipo elemental de esta energía se define por el ambiente que te rodea, puedes absorber energía vital de este mismo para tomar un elemento básico o especial y darle sus características al flujo ofensivo (Daño 1d10 Elemental). en caso de ser un elemento inofensivo físicamente solo se aplicará el efecto que produzca."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Flujo Corporal",
+            "text": "Conociendo los límites de la emisión de energía vital puedes conseguir un control tan extremo que permite incluso enviar partes de ti a través de él dentro de un espacio visible a 100 Pies. Esta técnica se puede realizar con 2 tipos diferentes de partes.\n\n1. Sensoriales : Ojos , nariz, boca y oído. (10 PS) Extremidades: Brazos y piernas (20 Ps)\n\n2. Estas partes enviadas en el flujo seguirán manteniendo las funciones corporales que tendrían al estar unidas, ver, oír, oler, hablar... etc con las Sensoriales y tomar cosas , golpear, empujar y ejecutar acciones de contacto con las extremidades.\n\nCada parte separada de ti por el flujo contará con unos puntos de salud que definirán su resistencia, al regresarlas utilizando de nuevo esta habilidad,se transmite a ti el daño que haya recibido esta parte. Al esta parte de ti perder todos su puntos de salud pasará a quedar inutilizada y la perderás."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Flujo de Vida",
+            "text": "Al controlar el flujo de energía vital, puedes enviar mediante este puntos de salud hacia un aliado que los necesite a 60 pies. Es un traspaso de salud, por lo tanto la misma cantidad que envíes a tu aliado la perderás."
+        },
+        {
+            "filter_stat": "wis",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Nebulosa de Cambio",
+            "text": "Comprendiendo la composición de la naturaleza en cuanto a energía vital , puedes manipular la misma para cambiar en pequeños espacios esta, en un radio de 15 pies que puedas ver puedes cambiar el terreno que les rodea, convertir un bosque en un desierto, una fábrica en una montaña nevado, o incluso una cueva en un trozo de mar abierto, Esta transformación de ambiente se puede realizar siempre que el resultado sea un lugar conocido para el transmutador."
+        },
+        {
+            "filter_stat": "wis",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Antinatural",
+            "text": "Obtienes la capacidad de transmutar incluso tu propia energía vital, El cambio corpóreo requiere un gran gasto de energía, moldearte incluso a ti mismo tiene un costo, aunque se refleja de forma diferente. Al transmutarse puedes:\n\n1. Cambiar tu apariencia física, rasgos, olores y muchos detalles a los de una otra persona.\n\n2. Cambiar tu composición para adquirir la forma de un objeto.\n\n3. adquirir la forma de otro ser vivo diferente al humano.\n\nEste cambio tendrá una duración máxima de 10 minutos. Ten en cuenta que tu cuerpo adquiere la constitución de la nueva forma y puntos de salud equivalentes a la misma."
+        },
+        {
+            "filter_stat": "wis",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Punto Muerto",
+            "text": "El Tabú más grande el control de energía vital se halla ante ti, la transmutación de vida, Al moldear incluso las bases de la vida y la muerte puedes traer a la vida un cadáver o recipiente vacío apto para la vida. al traer a la vida un cadáver o recipiente apto tienes que tener en cuenta lo siguiente:\n\n1. El coste de entregar vida a es proporcional a tu energía vital, dependiendo de cuánta vitalidad necesites en la nueva vida entregaras parte de la tuya a cambio ( Se te restará de los puntos de salud máximos los puntos de salud que tendrá la nueva vida).\n\n2. Esta habilidad no sirve para traer devuelta a aquellos que perecieron, el moldear el concepto de vida y muerte dará como resultado una nueva existencia, tu cadáver o recipiente apto será portador de una nueva vida, que tu podras moldear a tu beneficio antes de que tome conciencia.\n\n3. Al esta nueva vida morir o obtener autonomía los puntos de salud máximos regresan al usuario."
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Egvis",
+            "text": "Al generar energía vital puedes crear pequeñas criaturas llamadas “Egvis”, estas criaturas nacen de tu energía vital directamente, por lo que estarán conectadas a ti, Los “Egvis” son solo visibles para los Invocadores y no pueden tocar nada físico, tienen que mantenerse a 120 Pies de su invocador y solo se podrá invocar uno a la vez. Los “Egvis” tienen la función de ser un tercer ojo para su invocador, al no ser 100% físicos pueden atravesar cosas, flotar y moverse con total libertad a los alrededores del innovador, en batalla contarán con movimiento Independiente durante la ronda aliada , todo lo que vean los “Egvis” será informado al Invocador a través de comunicación mental.Los “Egvis” Al Nacer tomarán 5 Puntos de salud máximos del invocador como pago, pero al ser desconvocados utilizando esta misma habilidad podrás recuperar esos puntos de salud máxima."
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Copia",
+            "text": "Permite crear una copia exacta e idéntica de algo con lo que él se haya tenido contacto anteriormente, esta copia sólo se podrá hacer de objetos carentes de vida y según la complejidad del objeto tomará energía vital a cambio."
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Sirviente",
+            "text": "Conociendo a mayor medida la construcción y generación de energía vital se puede llegar a crear vida condicionada o también conocida como “Sirviente”. Este sirviente puede ser creado en 3 estados diferentes y siempre seguirá tus directrices, sin importar el que. Además de lo anterior y a diferencia de otras creaciones del invocador, el sirviente requiere un coste de Puntos de salud máxima que será su sustento en el mundo, pero no te preocupes, al morir este sirviente los puntos de salud volverán a ti.\n\n1. Mascota (Coste 10 Ps Máximos): Se crea vida de un tamaño menor o igual a 1 Pie, Como estructura se imita a cualquier cuadrupedo a elección del invocador y obtendrá las siguientes bases:\n• Puntos de salud: 10\n• Defensa: 2\n• Integridad: 2\n• Movimiento: 35 Pies por turno.\n• Compatibilidad e Incompatibilidad: Ninguna.\n• Capacidad de realizar acciones básicas.\n\n2. Montura (Coste 15 Ps Max): se crea vida de tamaño medio o grande según lo solicitado, su apariencia se puede asemejar a animales de carga o versiones gigantes de pequeñas criaturas que se puedan utilizar como montura, con detalles y apariencia pudiendo variar según gustos del invocador, la directriz especial es ser capaz de llevar a una o más personas y el tipo de transporte lo de define el invocador al crearlo (Terrestre, Volador, Acuático). Este obtendrá las siguientes bases:\n• Puntos de salud: 15.\n• Defensa: 4\n• Integridad: 2\n• Movimiento: 50 Pies por turno\n• Compatibilidad e Incompatibilidad: Ninguna.\n• Capacidad de realizar acciones básicas.\n\n3. Compañero (Coste 20 Ps Max): se crea vida de un tamaño medio o igual al de un humano promedio, su apariencia también concuerda con la de una persona, aunque sus rasgos y detalles pueden variar al gusto del invocador. Este obtendrá las siguientes bases:\n• Puntos de salud: 25\n• Defensa: 3\n• Integridad: 3\n• Movimiento: 30 Pies por turno\n• Compatibilidad e Incompatibilidad: Ninguna.\n• Capacidad de realizar acciones básicas.\n• Capacidad Utilizar energía vital en su forma más básica"
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Destrucción",
+            "text": "Al dominar el arte de la creación, aprende también el otro principio básico del universo, la destrucción. esta técnica se utiliza para desmaterializar creaciones de otros invocadores, si sospechas que un objeto o ser vivo es producto de un invocador puedes al tacto desmaterializar a este usando los mismo principio con los cuales fue construido, esta técnica no hará nada si lo o a quien tocas no fue creado por otro invocador. Aunque también lleva otro uso que se aprendió con el tiempo, si un ser vivo o objeto está siendo alterado por otro arquetipo ( Potenciador, manipulador, emisor o transmutador) esta técnica devolverá a su estado original antes de la iteración a lo que tocas."
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Mi Empresa",
+            "text": "Esta habilidad aunque aparenta simpleza ha sido un pilar para los manipuladores durante la antigüedad. mi empresa permite realizar un contrato entre dos partes, ambas partes deben salir beneficiadas de este contrato al igual que deben estar de acuerdo con la realización. En el contrato debe estar estipulado lo que realizará cada una de estas partes y el manipulador puede elegir las consecuencias del incumplimiento por cualquier parte. al completarse los pasos anteriores ambas personas estrecharán sus brazos, al realizar esto su energía vital quedara entrelazada, de esta forma en caso de incumplimiento del contrato la misma energía vital tomará la forma de vigilante nuestro en este contrato, si alguna de las 2 partes decide no cumplir lo estipulado la energía vital se cobrará del mismo. lo que haya sido estipulado como consecuencia por loco o imposible que sea la energía vital se encargará de hacerlo realidad para castigar a la parte infractora."
         }
     ],
     "secondaryActions": [
@@ -53,10 +144,24 @@
         },
         {
             "filter_stat": "dex",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Sigilo (Mejora)",
+            "text": "Si tu arquetipo es Emisor Sigilo aumenta su eficiencia permitiendo esconder el olor y sonido provenientes de este."
+        },
+        {
+            "filter_stat": "dex",
             "req_arch": false,
             "filter_req": 0,
             "title": "Visión Potenciada",
             "text": "Aumentar el flujo de energía vital en los sentidos se obtiene la habilidad de buscar presencias cercanas en un rango de 120 pies."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Visión Potenciada (Mejora)",
+            "text": "Si tu arquetipo es Emisor la visión potenciada también permite detectar fuentes de energía vital diferentes al ambiente."
         },
         {
             "filter_stat": "str",
@@ -78,6 +183,34 @@
             "filter_req": 16,
             "title": "Reinicio",
             "text": "Permite imbuir de energía vital a un oponente al contacto hasta crear una “sobrecarga”, al estar en sobrecarga cualquier habilidad que este esté utilizando o tenga que le proporcione efectos al mismo será limpiada de su ser y se detendrán su funcionamiento dejando al objetivo en un estado de “silencio”. Al estar en “silencio” no se podrá utilizar habilidades de energía vital hasta el comienzo del siguiente turno del afectado. Esta habilidad contará como un ataque dirigido a la integridad del enemigo cuyo elemento es la mente."
+        },
+        {
+            "filter_stat": "wis",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Metamorfosis Material",
+            "text": "Conociendo la composición de las cosas puedes moldear esa energía vital que poseen para cambiar totalmente sus propiedades, así mismo un trozo de madera puede convertirse en un roca, el metal más simple, en oro de gran pureza y mucho más, aunque las leyes de la energía vital son claras si el material original y el resultado difieren en valores tú tendrás que pagar la diferencia con tu propia energía vital, la transmutación de objetos es clave pero peligrosa si no se controla la medida ( - Ps Segun diferencia de valores)"
+        },
+        {
+            "filter_stat": "wis",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Metamorfosis Espacial",
+            "text": "Al el ambiente que te rodea ser energía vital pura también puede ser manipulada, Obtienes la capacidad de intercambiar a ti o a una criatura de lugar en un espacio que puedas ver a 100 pies de ti, el cambio de lugar tiene que cumplir ciertas condiciones:\n\n1. El espacio al que se cambie la criatura tiene que poder contener a esta misma.\n\n2. El espacio al que se cambie debe contar con un suelo,donde sostener este cambio.\n\n3. Si la criatura a cambiar no está dispuesta al cambio se tendrá que hacer una tirada de 1d6 contra su integridad, al superarla el cambio se realizará, al fallar esta habilidad no tendrá efecto."
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Desastre Natural",
+            "text": "Al Comprender tanto el mundo como la energía vital que lo rodea Puedes llevar la creación de esta misma a un punto más abstracto. Obteniendo así la posibilidad de crear un esfera climática. Las esferas climáticas son Concentración Físicas de energía vital del tamaño Mediano (Similar a una Cabeza) que lleva dentro de sí toda la energía vital que llevaría el ambiente en un bioma específico del mundo. al estar tanta energía vital concentrada en poco espacio esta esfera será inestable y al romperse al mínimo golpe generará una ola expansiva que cambia el Clima en un radio de 60 pies al que se concentró en la esfera.\n\n1. Tormenta Eléctrica: La Gran Tormenta generará constantes descargas eléctricas a los seres vivos que se encuentren en ella cada ronda que pase.\n\n2. Sequía Desértica: La Zona Ahora Seca, árida y calurosa genera un mayor cansancio y dificultad a la hora de transitar, todos los seres vivos dentro de esta se moverán 10 pies menos.\n\n3. Calcinación Volcánica: El Infernal Calor de un Volcán puede ser mortal, todo lo inflamable dentro de esta zona comenzará arder.\n\n4. Helada Glaciar: El Quebrantador frío de los glaciares se apodera de la zona, todo líquido dentro de la misma tiende a solidificarse, el granizo comienza a caer y el frío a penetrar a los seres vivos dentro de la zona, la defensa e integridad de los mismo disminuye (-1) al encontrarse en esta.\n\n5. Huracán devastador: Huracán devastador: Un devastador tornado Aparece en medio de la zona, este Tornado se moverá entre rondas Empujando y haciendo daño (1d12 de viento) a quien se halle en medio."
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Mi Orden",
+            "text": "Con el control de la energía vital puedes ordenarle a una persona o animal hacer algo, este algo que deseas tiene que mantener la seguridad de la persona o animal que recibe la orden, órdenes que expresen el daño directo al manipulado no tendrán efecto, al igual que se tendrá que hacer una tirada en contra de su integridad para que la orden tenga efecto (1D6), esta orden que hagas no tiene que atentar contra lo ideales del afectado, aunque sí lo hace tendrás que pagar con la mitad de tus puntos de salud si quieres que se continúe. al aplicar la orden el afectado no recordara el momento de activación de la habilidad e interpretara la orden como una idea propia. la orden no tiene por que ser inmediata se puede especificar bastante a la hora de dar la misma, Fecha , Hora , Lugar y momento reactivo, etc. eso sí manteniendo la orden como una acción en un momento a realizar por el individuo. al realizar la orden el objetivo manipulado no se percataron del efecto de esta habilidad. al usar exitosamente o fallar utilizando esta habilidad contra un objetivo tendrás que esperar una hora para el utilizarla de nuevo con el mismo objetivo."
         }
     ],
     "allyReactions": [
@@ -85,7 +218,15 @@
             "filter_stat": "wis",
             "req_arch": false,
             "filter_req": 0,
-            "text": "Alteración (RA): Al entender la naturaleza del ataque, defensa e integridad de la energía vital te permite conceder a las personas una segunda oportunidad en fallos de tirada."
+            "title": "Alteración",
+            "text": "Al entender la naturaleza del ataque, defensa e integridad de la energía vital te permite conceder a las personas una segunda oportunidad en fallos de tirada."
+        },
+        {
+            "filter_stat": "wis",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Alteración (Mejora)",
+            "text": "Si tu Arquetipo es Transmutador Alteración también aportará un bono de +1 a la nueva tirada."
         },
         {
             "filter_stat": "cha",
@@ -100,6 +241,41 @@
             "filter_req": 0,
             "title": "Sonidos Relajantes (Mejora)",
             "text": "Si tu arquetipo es Manipulador Sonidos relajantes afecta a todos tus aliados que se encuentren a 10 pies de ti."
+        },
+        {
+            "filter_stat": "wis",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Dados Trucados",
+            "text": "De forma precisa puedes transformar la energía vital de tus aliados para Potenciar sus actos, tanto ataques como cualquier cosa que hagan pueden ser transformadas en una versión mejor de las mismas, aunque al hacerlo tendrás que dar parte de tu energía vital como puntos de salud para mantener el equilibrio de valores:\n+1 a la tirada = 5 Ps\n+2 a la tirada = 10 Ps\n+3 a la tirada = 15 Ps\n+4 a la tirada = 20 Ps\n+5 a la tirada = 25 Ps\n+6 a la tirada = 30 Ps\nSi no cuentas con los puntos de salud requeridos para el pago de energía vital esta habilidad no tendrá efecto."
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Duplica",
+            "text": "Permite llevar la creación de energía vital a un nivel extremo donde cuando una persona decida atacar se puede reproducir una dupla del mismo que seguirá sus movimientos para duplicar sus acciones durante el turno."
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Mi Voluntad",
+            "text": "Plantar la semilla de una idea es el primer paso de un manipulador, utilizando tu manejo de energía vital puedes hacer que alguna persona a 60 pies de ti se vuelva más susceptible a ciertas ideas, esto no garantiza que estén 100% de acuerdo con lo que dices, pero estarán más abiertos a esta idea si se las presentan de forma correcta(1d6 en contra de la integridad del objetivo). al usar exitosamente o fallar utilizando esta habilidad contra un objetivo tendrás que esperar una hora para el utilizarla de nuevo con el mismo objetivo."
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Mi Verdad",
+            "text": "Permite manejar la energía vital de alguien que te rodee para hacerle creer una Mentira, incluso aunque esta parezca imposible, a diferencia de “Mi Voluntad” al el objetivo caer antes la habilidad creará incondicionalmente tu mentira. Hay un par de condiciones al usar esta habilidad, la primera siendo que no tendrá efecto alguno si lo que plasmas es diferente a una mentira y la segunda que el objetivo tiene que estar activamente hablando contigo para poder plasmar la mentira en su ser (1d6 en contra de la integridad del objetivo). al usar exitosamente o fallar utilizando esta habilidad contra un objetivo tendrás que esperar una hora para el utilizarla de nuevo con el mismo objetivo."
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Mi Marioneta",
+            "text": "Esta habilidad te permite hacer uso del cuerpo y mente de una persona u animal. al conectarse con él podrás manejar sus palabras, movimiento durante un periodo de 10 Minutos. aunque no es tan sencillo como suena ya que el poder utilizar esta marioneta tiene sus condiciones:\n• La persona o animal a usar debe hallarse inconsciente.\n• La persona o animal no debería haber sido afectada anteriormente por esta habilidad por tu parte.\n• Al utilizar la habilidad el cuerpo del manipulador pasa a estar no consciente hasta que terminan los 10 minutos\n• Para utilizar esta habilidad se tiene que hacer una tirada(1d6) en contra de la integridad de la persona o animal elegidos, si esta falla se tendrá que esperar una hora para volver a intentarlo.\nAl conseguir la manipulación obtendrás los siguientes efectos:\n• La mente del manipulador pasará a estar en el cuerpo de la persona o animal elegido y podrá dar uso a habilidades que este sepa.\n• Se obtienen las memorias de la persona o animal manipulado.\nPero recuerda que si el cuerpo del manipulador muere mientras se encuentra en el cuerpo de la persona o animal elegido, la manipulación terminará en seco. y el ser manipulado recuperara la conciencia y control de su cuerpo y facultades."
         }
     ],
     "enemyReactions": [
@@ -107,19 +283,43 @@
             "filter_stat": "wis",
             "req_arch": false,
             "filter_req": 0,
-            "text": "Distorsión (RE): Al concentrar la energía vital se puede modificar sus propiedades, de esa forma se puede cambiar el tipo de daño de los ataques que se recibirán (Cambio de daño elemental Básico)"
+            "title": "Distorsión",
+            "text": "Al concentrar la energía vital se puede modificar sus propiedades, de esa forma se puede cambiar el tipo de daño de los ataques que se recibirán (Cambio de daño elemental Básico)"
+        },
+        {
+            "filter_stat": "wis",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Distorsión (Mejora)",
+            "text": "Si tu arquetipo es Transmutador El cambio elemental de distorsión también se podrá hacer a daño de elementos especiales."
         },
         {
             "filter_stat": "int",
             "req_arch": false,
             "filter_req": 0,
-            "text": "Ola de radiación (RE): Al entender los puntos de producción de energía vital eres capaz de crear una ola de radiación a tu alrededor que genera una esfera de energía que te protege( Defensa + 2 o Integridad +2)"
+            "title": "Ola de Radiación",
+            "text": "Al entender los puntos de producción de energía vital eres capaz de crear una ola de radiación a tu alrededor que genera una esfera de energía que te protege( Defensa + 2 o Integridad +2)"
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Ola de Radiación (Mejora)",
+            "text": "Si tu Arquetipo es Invocador Ola de Radiación proporciona mayor protección (+4 defensa o +4 Integridad)"
         },
         {
             "filter_stat": "cha",
             "req_arch": false,
             "filter_req": 0,
-            "text": "Sonidos Atemorizantes (RE): Al entender el manejo de la energía vital se puede asustar a una persona que se encuentre a 10 pies de ti (-1 a la siguiente tirada)"
+            "title": "Sonidos Atemorizantes",
+            "text": "Al entender el manejo de la energía vital se puede asustar a una persona que se encuentre a 10 pies de ti (-1 a la siguiente tirada)"
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Sonidos Atemorizantes (Mejora)",
+            "text": "Si tu arquetipo es Manipulador Sonidos Atemorizantes afecta a todos Los enemigos que se encuentren a 10 pies de ti."
         },
         {
             "filter_stat": "str",
@@ -134,6 +334,27 @@
             "filter_req": 16,
             "title": "Bloqueo",
             "text": "El ahora perfecto dominio de la infusión de energía vital se halla en ti, todos tus sentidos han mejorado al punto que ahora puedes moverte a velocidades astronómicas solo para interponerte en el ataque que pueda recibir un aliado a 30 pies de ti. Al hacerlo, dependerá de tu defensa si el ataque te afecta o no, pero independiente del resultado has evitado el daño a tu aliado."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Repeler Energía",
+            "text": "La emisión de energía y el control de la intensidad permiten desviar objetos físicos y flujos de energía que se dirijan hacia ti mediante una rafaga de la misma. (Daño recibido - 1d8) Si el total del daño es inferior o igual al daño amortiguado por la rafaga de energía vital, el proyectil u energía se considera repelido y podrá ser redirigido a otra criatura, esta redirección requerirá una nueva tirada hacia la defensa o integridad del nuevo objetivo."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Flujo Positivo",
+            "text": "Gracias al dominio del flujo de energía vital, puedes enviar rafagas de energía elemental a tus aliados para imbuir sus ataques con un elemento básico o especial a elección agregando así potencia o un efecto (+1d6 extra daño elemental)."
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Mi Seguridad",
+            "text": "Al aprender a manejar la energía vital a su máximo puedes desviar las emisiones de esta que se dirigen hacia ti, sean ataques o habilidades que te tengan como objetivo."
         }
     ]
 }
