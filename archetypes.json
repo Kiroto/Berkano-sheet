@@ -96,18 +96,5 @@
             "Mente"
         ],
         "incompat": []
-    },
-    {
-        "key": "berserker",
-        "name": "Berserker",
-        "mainStat": "str",
-        "health": 50,
-        "defense": 4,
-        "integrity": 2,
-        "speed": "30ft",
-        "compat": [
-            "Mente"
-        ],
-        "incompat": []
     }
 ]
