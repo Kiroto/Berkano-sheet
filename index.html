@@ -9,6 +9,8 @@
   <body>
     <div class="header-container">
       <div class="stat-container">
+        <label for="archetype-select">Arquetipo</label>
+        <select id="archetype-select"></select>
         <label for="str-bar">Fuerza</label>
         <div>
           <progress
@@ -18,7 +20,6 @@
             max="20"
           ></progress>
           <input id="str-input" type="number" min="0" max="20" value="0" />
-          <input id="str-arch" type="checkbox" />
         </div>
         <label for="dex-bar">Destreza</label>
         <div>
@@ -29,7 +30,6 @@
             max="20"
           ></progress>
           <input id="dex-input" type="number" min="0" max="20" value="0" />
-          <input id="dex-arch" type="checkbox" />
         </div>
         <label for="wis-bar">Sabiduría</label>
         <div>
@@ -40,7 +40,6 @@
             max="20"
           ></progress>
           <input id="wis-input" type="number" min="0" max="20" value="0" />
-          <input id="wis-arch" type="checkbox" />
         </div>
         <label for="int-bar">Inteligencia</label>
         <div>
@@ -51,7 +50,6 @@
             max="20"
           ></progress>
           <input id="int-input" type="number" min="0" max="20" value="0" />
-          <input id="int-arch" type="checkbox" />
         </div>
         <label for="cha-bar">Carisma</label>
         <div>
@@ -62,8 +60,28 @@
             max="20"
           ></progress>
           <input id="cha-input" type="number" min="0" max="20" value="0" />
-          <input id="cha-arch" type="checkbox" />
         </div>
+      </div>
+      <div class="stat-container">
+        <label for="name-input">Nombre</label>
+        <input id="name-input" type="text" />
+        <label for="health-input">Vida (Actual/MaximaActual/MaximaBase)</label>
+
+        <progress id="health-progress" min="0" max="50" value="50"></progress>
+
+        <div class="horizontal-flex">
+          <input id="health-input" type="number" value="50" />
+          /
+          <input id="health-current-max" type="number" value="50" />
+          /
+          <input id="health-max" type="number" value="50" readonly />
+        </div>
+        <label for="movement-input">Movimiento</label>
+        <input id="movement-input" type="text" readonly />
+        <label for="compatibilities-input">Compatibilidades</label>
+        <input id="compatibilities-input" type="text" readonly />
+        <label for="incompatibilities-input">Incompatibilidades</label>
+        <input id="incompatibilities-input" type="text" readonly />
       </div>
       <div id="ultimate-field" class="ultimate-text-area-container">
         <h2>Definitiva</h2>
@@ -97,6 +115,10 @@
       allyReactions: [],
       enemyReactions: []
     }
+
+    const defaultArchetypeSource = []
+    const archetypeSource = []
+    archetypeSource.push(...defaultArchetypeSource)
     const actionSource = Object.assign({}, defaultActionSource)
 
     const DOMPAList = document.getElementById('primary-actions')
@@ -105,13 +127,21 @@
     const DOMERList = document.getElementById('enemy-reactions')
 
     const DOMUltimateField = document.getElementById('ultimate-field')
+    const DOMArchetypeSelect = document.getElementById('archetype-select')
+
+    const DOMHealthBar = document.getElementById('health-progress')
+    const DOMHealthCurrent = document.getElementById('health-input')
+    const DOMHealthCurrentMax = document.getElementById('health-current-max')
+    const DOMMaxHealth = document.getElementById('health-max')
+    const DOMMovement = document.getElementById('movement-input')
+    const DOMCompat = document.getElementById('compatibilities-input')
+    const DOMIncompat = document.getElementById('incompatibilities-input')
 
     const genStatPair = statName => {
       return {
         stat: statName,
         bar: document.getElementById(statName + '-bar'),
-        input: document.getElementById(statName + '-input'),
-        arch: document.getElementById(statName + '-arch')
+        input: document.getElementById(statName + '-input')
       }
     }
 
@@ -119,26 +149,50 @@
 
     const statDomData = stats.map(it => genStatPair(it))
 
-    const refreshListPerThing = (domList, listSource) => {
+    const getCurrentArchKey = () => {
+      return DOMArchetypeSelect.value
+    }
+
+    const getCurrentArch = () => {
+      return archetypeSource.find(it => it['key'] == getCurrentArchKey())
+    }
+
+    const getCurrentArchStat = () => {
+      const arch = getCurrentArch()
+      if (arch) {
+        return arch['mainStat']
+      }
+      return undefined
+    }
+
+    const refreshListPerThing = (domList, listSource, icon = undefined) => {
       domList.innerHTML = ''
+      const currentArchStat = getCurrentArchStat()
+      const currentArchKey = getCurrentArchKey()
 
       listSource.forEach(it => {
         const filterStatName = it['filter_stat']
         const filterReq = parseInt(it['filter_req'])
         const dataSource = statDomData.find(it => it.stat == filterStatName)
         const filterValue = parseInt(dataSource.input.value)
-        const reqArch = it['req_arch']
+        const mainStatReq = it['filter_stat_req']
+        const mainStatIsArch = filterStatName == currentArchStat
+        const archReq = it['filter_archetype'] || []
+        const fulfillsArchReq =
+          archReq.length == 0 || archReq.includes(currentArchKey)
 
-        const isArch = dataSource.arch.checked
-
-        if (filterValue >= filterReq && (!reqArch || isArch)) {
+        if (
+          filterValue >= filterReq &&
+          (!mainStatReq || mainStatIsArch) &&
+          fulfillsArchReq
+        ) {
           const newAction = document.createElement('li')
           newAction.classList.add(filterStatName + '-action-item')
           newAction.classList.add('stat-action-item')
           if (it['title'] != undefined) {
             const titleSpan = document.createElement('span')
             titleSpan.classList.add('stat-action-item-title')
-            titleSpan.innerText = it['title']
+            titleSpan.innerText = (icon || '') + it['title']
             newAction.appendChild(titleSpan)
           }
           const contentDiv = document.createElement('div')
@@ -150,11 +204,21 @@
     }
 
     const refreshActionsList = () => {
-      refreshListPerThing(DOMPAList, actionSource.primaryActions)
-      refreshListPerThing(DOMSAList, actionSource.secondaryActions)
+      const oldArchetype = getCurrentArchKey()
+      DOMArchetypeSelect.innerHTML = ''
+      archetypeSource.forEach(it => {
+        const newArchetypeSelectOpt = document.createElement('option')
+        newArchetypeSelectOpt.value = it['key']
+        newArchetypeSelectOpt.text = it['name']
+        DOMArchetypeSelect.appendChild(newArchetypeSelectOpt)
+      })
 
-      refreshListPerThing(DOMARList, actionSource.allyReactions)
-      refreshListPerThing(DOMERList, actionSource.enemyReactions)
+      DOMArchetypeSelect.value = oldArchetype
+
+      refreshListPerThing(DOMPAList, actionSource.primaryActions, '🗡️')
+      refreshListPerThing(DOMSAList, actionSource.secondaryActions, '🛡️')
+      refreshListPerThing(DOMARList, actionSource.allyReactions, '👋')
+      refreshListPerThing(DOMERList, actionSource.enemyReactions, '☝️')
 
       DOMUltimateField.hidden = !statDomData.some(
         it => parseInt(it['input'].value) >= 20
@@ -171,8 +235,24 @@
 
         refreshActionsList()
       }
+
+      const archetypeSelectHandler = receiver => {
+        const currentArch = getCurrentArch()
+        DOMMaxHealth.value = currentArch.health
+        DOMMovement.value = currentArch.speed
+        DOMCompat.value = currentArch.compat.join(', ')
+        DOMIncompat.value = currentArch.incompat.join(', ')
+        refreshActionsList()
+      }
+
+      const updateHealthBar = receiver => {
+        DOMHealthBar.max = DOMHealthCurrentMax.value
+        DOMHealthBar.value = DOMHealthCurrent.value
+      }
       statPair['input'].addEventListener('change', refreshActionHandler)
-      statPair['arch'].addEventListener('change', refreshActionHandler)
+      DOMArchetypeSelect.addEventListener('change', archetypeSelectHandler)
+      DOMHealthCurrent.addEventListener('change', updateHealthBar)
+      DOMHealthCurrentMax.addEventListener('change', updateHealthBar)
     })
 
     // Set default values
@@ -193,8 +273,26 @@
       .then(data => {
         actionSource.length = 0
         Object.assign(actionSource, data)
-        refreshActionsList()
       })
       .catch(error => console.error('Unable to fetch data:', error))
+      .finally(it => {
+        refreshActionsList()
+      })
+
+    fetch('./archetypes.json')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+        return res.json()
+      })
+      .then(data => {
+        archetypeSource.length = 0
+        Object.assign(archetypeSource, data)
+      })
+      .catch(error => console.error('Unable to fetch data:', error))
+      .finally(it => {
+        refreshActionsList()
+      })
   </script>
 </html>

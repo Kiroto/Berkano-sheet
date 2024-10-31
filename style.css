@@ -93,6 +93,7 @@
 
 .stat-action-item-title {
   font-weight: bold;
+  font-size: large;
 }
 
 .header-container {
@@ -105,11 +106,15 @@
 
 #ultimate-text-area {
   width: calc(100% - 10px);
-  max-width:  calc(100% - 10px);
+  max-width: calc(100% - 10px);
   height: 70%;
   max-height: 70%;
   resize: none;
 }
 h2 {
   text-align: center;
+}
+
+.horizontal-flex {
+  display: flex;
 }
