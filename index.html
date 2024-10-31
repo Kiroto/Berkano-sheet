@@ -145,6 +145,8 @@
       enemyReactions: []
     }
 
+    const localStoragePlayerSave = 'playerData'
+
     const defaultArchetypeSource = []
     const archetypeSource = []
     archetypeSource.push(...defaultArchetypeSource)
@@ -271,6 +273,8 @@
 
       updateHealthBar()
       updateArchetypeData()
+      saveLocally()
+
     }
 
     // Set up event listeners
@@ -315,6 +319,7 @@
     }
 
     const loadPlayerData = obj => {
+      console.log("loading player data...")
       DOMName.value = obj.name
       DOMArchetypeSelect.value = obj.archetype
       getStatDomData('str').input.value = obj.str
@@ -345,6 +350,7 @@
       DOMActionsReload.hidden = !isCustomAct
       actionSource.length = 0
       Object.assign(actionSource, obj)
+
       refreshActionsList()
     }
 
@@ -354,9 +360,18 @@
 
       archetypeSource.length = 0
       Object.assign(archetypeSource, obj)
+      
       updateArchetypeData()
       updateHealthBar()
       refreshActionsList()
+    }
+
+    const saveLocally = () => {
+      console.log("saving locally...")
+      localStorage.setItem(
+        localStoragePlayerSave,
+        JSON.stringify(retrieveCurrentData())
+      )
     }
 
     const updateHealthBar = receiver => {
@@ -373,6 +388,7 @@
       DOMIncompat.value = currentArch.incompat.join(', ')
       DOMDefense.value = currentArch.defense
       DOMIntegrity.value = currentArch.integrity
+      saveLocally()
     }
 
     const refreshStatBars = () => {
@@ -485,5 +501,11 @@
 
     resetActionSource()
     resetArchetypeSource()
+    ;(() => {
+      const preexistingData = localStorage.getItem(localStoragePlayerSave)
+      if (preexistingData) {
+        loadPlayerData(JSON.parse(preexistingData))
+      }
+    })()
   </script>
 </html>
