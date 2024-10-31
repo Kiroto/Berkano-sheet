@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header-container">
+      <div class="stat-container">
+        <label for="str-bar">Fuerza</label>
+        <div>
+          <progress
+            class="str-progress"
+            id="str-bar"
+            value="0"
+            max="20"
+          ></progress>
+          <input id="str-input" type="number" min="0" max="20" value="0" />
+          <input id="str-arch" type="checkbox" />
+        </div>
+        <label for="int-bar">Inteligencia</label>
+        <div>
+          <progress
+            class="int-progress"
+            id="int-bar"
+            value="0"
+            max="20"
+          ></progress>
+          <input id="int-input" type="number" min="0" max="20" value="0" />
+          <input id="int-arch" type="checkbox" />
+        </div>
+        <label for="wis-bar">Sabiduría</label>
+        <div>
+          <progress
+            class="wis-progress"
+            id="wis-bar"
+            value="0"
+            max="20"
+          ></progress>
+          <input id="wis-input" type="number" min="0" max="20" value="0" />
+          <input id="wis-arch" type="checkbox" />
+        </div>
+        <label for="dex-bar">Destreza</label>
+        <div>
+          <progress
+            class="dex-progress"
+            id="dex-bar"
+            value="0"
+            max="20"
+          ></progress>
+          <input id="dex-input" type="number" min="0" max="20" value="0" />
+          <input id="dex-arch" type="checkbox" />
+        </div>
+        <label for="cha-bar">Carisma</label>
+        <div>
+          <progress
+            class="cha-progress"
+            id="cha-bar"
+            value="0"
+            max="20"
+          ></progress>
+          <input id="cha-input" type="number" min="0" max="20" value="0" />
+          <input id="cha-arch" type="checkbox" />
+        </div>
+      </div>
+      <div id="ultimate-field" class="ultimate-text-area-container">
+        <h2>Definitiva</h2>
+        <textarea id="ultimate-text-area"> </textarea>
+      </div>
+    </div>
+
+    <div class="action-list-container">
+      <div class="action-list">
+        <h2>Acciones Primarias</h2>
+        <ul id="primary-actions" class="actions-list"></ul>
+      </div>
+      <div class="action-list">
+        <h2>Acciones Secundarias</h2>
+        <ul id="secondary-actions" class="actions-list"></ul>
+      </div>
+      <div class="action-list">
+        <h2>Reacciones Aliadas</h2>
+        <ul id="ally-reactions" class="actions-list"></ul>
+      </div>
+      <div class="action-list">
+        <h2>Reacciones Enemigas</h2>
+        <ul id="enemy-reactions" class="actions-list"></ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    const defaultActionSource = {
+      primaryActions: [],
+      secondaryActions: [],
+      allyReactions: [],
+      enemyReactions: []
+    }
+    const actionSource = Object.assign({}, defaultActionSource)
+
+    const DOMPAList = document.getElementById('primary-actions')
+    const DOMSAList = document.getElementById('secondary-actions')
+    const DOMARList = document.getElementById('ally-reactions')
+    const DOMERList = document.getElementById('enemy-reactions')
+
+    const DOMUltimateField = document.getElementById('ultimate-field')
+
+    const genStatPair = statName => {
+      return {
+        stat: statName,
+        bar: document.getElementById(statName + '-bar'),
+        input: document.getElementById(statName + '-input'),
+        arch: document.getElementById(statName + '-arch')
+      }
+    }
+
+    const stats = ['str', 'int', 'wis', 'dex', 'cha']
+
+    const statDomData = stats.map(it => genStatPair(it))
+
+    const refreshListPerThing = (domList, listSource) => {
+      domList.innerHTML = ''
+
+      listSource.forEach(it => {
+        const filterStatName = it['filter_stat']
+        const filterReq = parseInt(it['filter_req'])
+        const dataSource = statDomData.find(it => it.stat == filterStatName)
+        const filterValue = parseInt(dataSource.input.value)
+        const reqArch = it['req_arch']
+
+        const isArch = dataSource.arch.checked
+
+        if (filterValue >= filterReq && (!reqArch || isArch)) {
+          const newAction = document.createElement('li')
+          newAction.classList.add(filterStatName + '-action-item')
+          newAction.classList.add('stat-action-item')
+          if (it['title'] != undefined) {
+            const titleSpan = document.createElement('span')
+            titleSpan.classList.add('stat-action-item-title')
+            titleSpan.innerText = it['title']
+            newAction.appendChild(titleSpan)
+          }
+          const contentDiv = document.createElement('div')
+          contentDiv.innerText = it['text']
+          newAction.appendChild(contentDiv)
+          domList.appendChild(newAction)
+        }
+      })
+    }
+
+    const refreshActionsList = () => {
+      refreshListPerThing(DOMPAList, actionSource.primaryActions)
+      refreshListPerThing(DOMSAList, actionSource.secondaryActions)
+
+      refreshListPerThing(DOMARList, actionSource.allyReactions)
+      refreshListPerThing(DOMERList, actionSource.enemyReactions)
+
+      DOMUltimateField.hidden = !statDomData.some(
+        it => parseInt(it['input'].value) >= 20
+      )
+    }
+
+    // Set up event listeners
+    statDomData.forEach(statPair => {
+      const refreshActionHandler = receiver => {
+        const changeAmt = receiver.target.value
+        if (!isNaN(changeAmt)) {
+          statPair['bar'].value = changeAmt
+        }
+
+        refreshActionsList()
+      }
+      statPair['input'].addEventListener('change', refreshActionHandler)
+      statPair['arch'].addEventListener('change', refreshActionHandler)
+    })
+
+    // Set default values
+    statDomData.forEach(statPair => {
+      statPair['bar'].value = statPair['input'].value
+    })
+
+    // Load with preliminary data
+    refreshActionsList()
+
+    fetch('./source.json')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+        return res.json()
+      })
+      .then(data => {
+        actionSource.length = 0
+        Object.assign(actionSource, data)
+        refreshActionsList()
+      })
+      .catch(error => console.error('Unable to fetch data:', error))
+  </script>
+</html>

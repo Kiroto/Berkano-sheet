@@ -1,0 +1,139 @@
+{
+    "primaryActions": [
+        {
+            "filter_stat": "str",
+            "req_arch": false,
+            "filter_req": 0,
+            "title": "Golpe Potenciado",
+            "text": "Se imbuye de energía vital tanto tu cuerpo como lo que portas para golpear con mayor fuerza al enemigo, y obteniendo un mayor daño al impacto (1d8 Extra )."
+        },
+        {
+            "filter_stat": "str",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Golpe Potenciado (Mejora)",
+            "text": "Si tu arquetipo es Potenciardor el daño de Golpe potenciado será aumentando a 1d12 Extra. y se podrá utilizar para imbuir en armas a distancia."
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": false,
+            "filter_req": 0,
+            "title": "Armería",
+            "text": "Utilizando la creación de energía vital puedes moldear armas de todo tipo, estas armas serán permanentes y tangibles en el mundo, Al crearlas tendrá que estar en un espacio vacío que puedas ver que esté a menos de 5 pies de ti. La invocación de estas tomará parte de tus Puntos de salud para compensar la creación de energía vital como cambio según lo invocado:\n\n          1. Armas Cuerpo a Cuerpo (Coste Invocación: 5 PS)(1d6 Daño): Espadas, lanzas, hachas, bastones, etc...\n\n          2. Armas a Distancia (Coste Invocación: 10 PS) (1d8 Daño): Armamento de Fuego, Arcos, Hondas, etc..."
+        },
+        {
+            "filter_stat": "str",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Sanación",
+            "text": "Al conocer en gran medida los atributos de imbuir de energía vital puedes utilizarlos para recuperar Salud en Medio de un conflicto, esta recuperación también se puede usar con aliados mediante el contacto (+ 1d12 PS). fuera de combate solo se podrá utilizar 2 veces al dia."
+        }
+    ],
+    "secondaryActions": [
+        {
+            "filter_stat": "str",
+            "req_arch": false,
+            "filter_req": 0,
+            "title": "Refuerzo",
+            "text": "Al imbuir de energía vital el cuerpo y mente obtiene un recubrimiento que proporciona +1 a la defensa o +2 a la integridad."
+        },
+        {
+            "filter_stat": "str",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Refuerzo (Mejora)",
+            "text": "Al imbuir de energía vital el cuerpo y mente obtiene un recubrimiento que proporciona +1 a la defensa o +2 a la integridad."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": false,
+            "filter_req": 0,
+            "title": "Sigilo",
+            "text": "Al imbuir emitir energía vital de forma constante alrededor de tu cuerpo el flujo crea un camuflaje que se combina con el ambiente, proporcionado escondite fácil ante el ojo común."
+        },
+        {
+            "filter_stat": "dex",
+            "req_arch": false,
+            "filter_req": 0,
+            "title": "Visión Potenciada",
+            "text": "Aumentar el flujo de energía vital en los sentidos se obtiene la habilidad de buscar presencias cercanas en un rango de 120 pies."
+        },
+        {
+            "filter_stat": "str",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Agresividad",
+            "text": "Imbuyendo tu cuerpo o el de un aliado al contacto, puedes imbuir un aumento en su energía vital que proporciona una Acción principal extra en este turno en caso propio o siguiente de tu aliado."
+        },
+        {
+            "filter_stat": "str",
+            "req_arch": false,
+            "filter_req": 10,
+            "title": "Terremoto",
+            "text": "Imbuyendo el terreno sólido que te rodea de energía vital, puedes producir un temblor que desestabiliza a las criaturas que se encuentren en el rango de este (20 pies). quienes se encuentren en el rango de temblor pierden la capacidad de utilizar su reacción aliada y enemiga, al igual que se reduce su movimiento a la mitad. Este temblor se detendrá al comienzo del siguiente turno de quien utilizó la habilidad."
+        },
+        {
+            "filter_stat": "str",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Reinicio",
+            "text": "Permite imbuir de energía vital a un oponente al contacto hasta crear una “sobrecarga”, al estar en sobrecarga cualquier habilidad que este esté utilizando o tenga que le proporcione efectos al mismo será limpiada de su ser y se detendrán su funcionamiento dejando al objetivo en un estado de “silencio”. Al estar en “silencio” no se podrá utilizar habilidades de energía vital hasta el comienzo del siguiente turno del afectado. Esta habilidad contará como un ataque dirigido a la integridad del enemigo cuyo elemento es la mente."
+        }
+    ],
+    "allyReactions": [
+        {
+            "filter_stat": "wis",
+            "req_arch": false,
+            "filter_req": 0,
+            "text": "Alteración (RA): Al entender la naturaleza del ataque, defensa e integridad de la energía vital te permite conceder a las personas una segunda oportunidad en fallos de tirada."
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": false,
+            "filter_req": 0,
+            "title": "Sonidos Relajantes",
+            "text": "Al entender el manejo de la energía vital se puede motivar a una persona que se encuentre a 10 pies de ti (+1 a la siguiente tirada)"
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": true,
+            "filter_req": 0,
+            "title": "Sonidos Relajantes (Mejora)",
+            "text": "Si tu arquetipo es Manipulador Sonidos relajantes afecta a todos tus aliados que se encuentren a 10 pies de ti."
+        }
+    ],
+    "enemyReactions": [
+        {
+            "filter_stat": "wis",
+            "req_arch": false,
+            "filter_req": 0,
+            "text": "Distorsión (RE): Al concentrar la energía vital se puede modificar sus propiedades, de esa forma se puede cambiar el tipo de daño de los ataques que se recibirán (Cambio de daño elemental Básico)"
+        },
+        {
+            "filter_stat": "int",
+            "req_arch": false,
+            "filter_req": 0,
+            "text": "Ola de radiación (RE): Al entender los puntos de producción de energía vital eres capaz de crear una ola de radiación a tu alrededor que genera una esfera de energía que te protege( Defensa + 2 o Integridad +2)"
+        },
+        {
+            "filter_stat": "cha",
+            "req_arch": false,
+            "filter_req": 0,
+            "text": "Sonidos Atemorizantes (RE): Al entender el manejo de la energía vital se puede asustar a una persona que se encuentre a 10 pies de ti (-1 a la siguiente tirada)"
+        },
+        {
+            "filter_stat": "str",
+            "req_arch": false,
+            "filter_req": 5,
+            "title": "Mitigación",
+            "text": "Al recibir tu o un aliado que se encuentre a 30 pies de ti un golpe obtienes la oportunidad de imbuir de energía vital el área del impacto disminuir el daño del mismo (1d8). Si el daño mitigado es mayor al daño que se recibiría también se anulan los efectos elementales que este provocaría."
+        },
+        {
+            "filter_stat": "str",
+            "req_arch": false,
+            "filter_req": 16,
+            "title": "Bloqueo",
+            "text": "El ahora perfecto dominio de la infusión de energía vital se halla en ti, todos tus sentidos han mejorado al punto que ahora puedes moverte a velocidades astronómicas solo para interponerte en el ataque que pueda recibir un aliado a 30 pies de ti. Al hacerlo, dependerá de tu defensa si el ataque te afecta o no, pero independiente del resultado has evitado el daño a tu aliado."
+        }
+    ]
+}

@@ -1,0 +1,115 @@
+.str-progress {
+  color: green;
+}
+
+.str-progress::-moz-progress-bar,
+.str-progress::-webkit-progress-value {
+  background: green;
+}
+
+.dex-progress {
+  color: blue;
+}
+
+.dex-progress::-moz-progress-bar,
+.dex-progress::-webkit-progress-value {
+  background: blue;
+}
+
+.int-progress {
+  color: red;
+}
+
+.int-progress::-moz-progress-bar,
+.int-progress::-webkit-progress-value {
+  background: red;
+}
+
+.wis-progress {
+  color: yellow;
+}
+
+.wis-progress::-moz-progress-bar,
+.wis-progress::-webkit-progress-value {
+  background: yellow;
+}
+
+.cha-progress {
+  color: purple;
+}
+
+.cha-progress::-moz-progress-bar,
+.cha-progress::-webkit-progress-value {
+  background: purple;
+}
+
+.stat-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: auto;
+}
+
+.action-list-container {
+  display: flex;
+  gap: 10px;
+}
+
+.action-list {
+  flex: 1 1 0px;
+}
+
+.actions-list {
+  list-style: none;
+  padding: 0;
+}
+
+.stat-action-item {
+  border-radius: 5px;
+  padding: 7px;
+  border-bottom: solid;
+  margin-bottom: 10px;
+}
+
+.str-action-item {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+.int-action-item {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.wis-action-item {
+  background-color: rgba(255, 230, 0, 0.2);
+}
+
+.dex-action-item {
+  background-color: rgba(38, 0, 255, 0.2);
+}
+
+.cha-action-item {
+  background-color: rgba(140, 0, 255, 0.2);
+}
+
+.stat-action-item-title {
+  font-weight: bold;
+}
+
+.header-container {
+  display: flex;
+}
+
+.ultimate-text-area-container {
+  flex-grow: 1;
+}
+
+#ultimate-text-area {
+  width: calc(100% - 10px);
+  max-width:  calc(100% - 10px);
+  height: 70%;
+  max-height: 70%;
+  resize: none;
+}
+h2 {
+  text-align: center;
+}
