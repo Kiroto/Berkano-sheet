@@ -71,7 +71,7 @@
           Configuración de arquetipos personalizada
         </label>
         <input id="archetypes-load" type="file" />
-        <button id="archetypes-default">Reiniciar Acciones</button>
+        <button id="archetypes-default">Reiniciar Arquetipos</button>
       </div>
       <div class="stat-container">
         <label for="name-input">Nombre</label>
@@ -342,6 +342,7 @@
 
     const loadActionSource = (obj, isCustom = true) => {
       isCustomAct = isCustom
+      DOMActionsReload.hidden = !isCustomAct
       actionSource.length = 0
       Object.assign(actionSource, obj)
       refreshActionsList()
@@ -349,6 +350,8 @@
 
     const loadArchetypeSource = (obj, isCustom = true) => {
       isCustomArch = isCustom
+      DOMArchetypeReload.hidden = !isCustomAct
+
       archetypeSource.length = 0
       Object.assign(archetypeSource, obj)
       updateArchetypeData()
